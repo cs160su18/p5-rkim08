@@ -6,3 +6,4 @@ def index(request):
     all_names = Users.objects.all()
     context = {'all_names': all_names}
     return render(request, 'life/index.html', context)
+

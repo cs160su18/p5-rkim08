@@ -85,11 +85,11 @@
       <a class="btn btn-light users" data-toggle="collapse" role="button" data-target="#some-class-{{forloop.counter}}">
               {{name}}
         </a>
-     
+     <br>
       <div class="collapse" id="some-class-{{forloop.counter}}">
         <div class="card card-body text-left"> 
           {% for social in name.social_set.all %}
-          <li>{{social}} </li>
+          <li>{{social}} </li><br>
         </div> 
       </div> 
       {% endfor %} 
@@ -102,6 +102,7 @@
          Add
       </button>
     </div>
+  
     
   
   
