@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from django.core import serializers
+from .models import Users
 
 def index(request):
-    return render(request, 'life/index.html')
+    all_names = Users.objects.all()
+    context = {'all_names': all_names}
+    return render(request, 'life/index.html', context)

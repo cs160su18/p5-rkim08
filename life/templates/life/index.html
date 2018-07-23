@@ -1,3 +1,11 @@
+<!-- <h3>Names: </h3>
+    <ul>
+        {% for name in all_names %}
+            <li>{{name}}</li>
+        {% endfor %}
+    </ul>
+ -->
+
 {% load static %}
 
 <!DOCTYPE html>
@@ -7,14 +15,96 @@
 		<title></title>
 
 		<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="{% static '/life/vendors/bootstrap/css/bootstrap.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static '/life/vendor/bootstrap/css/bootstrap.css' %}" />
 		<link rel="stylesheet" type="text/css" href="{% static '/life/css/main.css' %}" />
 
-		<script src="{% static '/life/vendors/jquery/jquery-3.3.1.min.js' %}"></script>
-		<script src="{% static '/life/vendors/jquery-ui/jquery-ui.min.js' %}"></script>
-	</head>
+		<script src="{% static '/life/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+		<script src="{% static '/life/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
+     
+<!--     needed for collapse button -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    
+	  <style type ="text/css">
+      .header{
+        display:flex;
+        justify-content:center;
+      }
+      .search, .search input[type=text] {
+        display:flex;
+        justify-content:center;
+      }
+
+      .row{
+        display:flex;
+      }
+      
+      .users{
+        font-size: 30px;
+      }
+      
+     
+      
+      
+    </style>
+
+ 
+  </head>
 	<body>
 		<!-- Your layout here -->
+    <div class="container">
+      <div class="header">
+       <h1>
+         Contacts
+        </h1>
+      </div>
+      
+      <div class="search">
+        <input type="text" placeholder="Search...">
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <h1>
+            My ID
+          </h1>
+        </div>
+         <div class="col-sm-8" align="right">
+          <h1>
+            gabichoi
+          </h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8">
+          <h1>
+            Friends
+          </h1>
+        </div>
+      </div>
+      {% for name in all_names %}
+      <a class="btn btn-light users" data-toggle="collapse" role="button" data-target="#some-class-{{forloop.counter}}">
+              {{name}}
+        </a>
+     
+      <div class="collapse" id="some-class-{{forloop.counter}}">
+        <div class="card card-body text-left"> 
+          {% for social in name.social_set.all %}
+          <li>{{social}} </li>
+        </div> 
+      </div> 
+      {% endfor %} 
+      {% endfor %} 
+
+ 
+      
+      
+       <button type="button" class="btn btn-light" style="float: right;">
+         Add
+      </button>
+    </div>
+    
+  
+  
 
 	</body>
 </html>
